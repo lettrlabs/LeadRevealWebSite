@@ -1,10 +1,16 @@
 # LeadRevealWebSite
 
-A fake small-business website ("Northgate Precision", a contract CNC machine shop) used as
-a **test customer site** for the LettrLabs Lead Reveal container install. It exists so the
-`container-serve` → `/hit` path can be exercised from a real browser on a real HTTPS origin.
+A **test customer site** for the LettrLabs Lead Reveal container install, styled after
+lettrlabs.com so the page looks like a real marketing property while the container and
+beacon path are exercised from a real browser on a real HTTPS origin.
 
-Not a real business. Every page carries `noindex, nofollow`.
+Not the real LettrLabs website. Every page carries `noindex, nofollow`, and the footer says
+so on every page. Do not link to it publicly.
+
+Brand assets are copied from the live site: `assets/img/favicon.ico`, `favicon-256.png` and
+`logo.webp` come from the Webflow CDN. Colors are the live palette (`#f05a2a` orange,
+`#130b46` ink, `#e4e6f1` border, `#f3f5fb` tint) and the typeface is Plus Jakarta Sans off
+Google Fonts. The hero collage is CSS, not their marketing imagery.
 
 ## Layout
 

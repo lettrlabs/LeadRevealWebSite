@@ -4,8 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
 <title>{{ page.title }} &middot; {{ site.title }}</title>
 <meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="shortcut icon" href="{{ '/assets/img/favicon.ico' | relative_url }}" type="image/x-icon">
+<link rel="icon" href="{{ '/assets/img/favicon-256.png' | relative_url }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ '/assets/img/favicon-256.png' | relative_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 {% if site.lead_reveal.public_key != "" %}
 <script async src="{{ site.lead_reveal.base_url }}{{ site.lead_reveal.public_key }}.js"></script>
@@ -15,52 +22,98 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="{{ '/' | relative_url }}">
-      <span class="brand-mark">NP</span>
-      <span class="brand-text">Northgate<strong>Precision</strong></span>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/img/logo.webp' | relative_url }}" width="222" height="42" alt="LettrLabs">
     </a>
-    <nav class="site-nav">
-      <a href="{{ '/' | relative_url }}"{% if page.nav == 'home' %} class="active" aria-current="page"{% endif %}>Home</a>
-      <a href="{{ '/products/' | relative_url }}"{% if page.nav == 'products' %} class="active" aria-current="page"{% endif %}>Products</a>
-      <a href="{{ '/milling/' | relative_url }}"{% if page.nav == 'milling' %} class="active" aria-current="page"{% endif %}>Milling</a>
-      <a href="{{ '/contacts/' | relative_url }}"{% if page.nav == 'contacts' %} class="active" aria-current="page"{% endif %}>Contacts</a>
+
+    <nav class="nav-links">
+      <a href="{{ '/' | relative_url }}"{% if page.nav == 'home' %} class="active"{% endif %}>Home</a>
+      <a href="{{ '/products/' | relative_url }}"{% if page.nav == 'products' %} class="active"{% endif %}>Products<span class="caret"></span></a>
+      <a href="{{ '/milling/' | relative_url }}"{% if page.nav == 'milling' %} class="active"{% endif %}>Milling<span class="caret"></span></a>
+      <a href="{{ '/contacts/' | relative_url }}"{% if page.nav == 'contacts' %} class="active"{% endif %}>Contacts</a>
     </nav>
+
+    <div class="nav-actions">
+      <a class="nav-login" href="{{ '/contacts/' | relative_url }}">Login</a>
+      <a class="btn btn-ghost" href="{{ '/contacts/' | relative_url }}">Free Sample</a>
+      <a class="btn btn-primary" href="{{ '/contacts/' | relative_url }}">Request Demo</a>
+    </div>
   </div>
 </header>
 
 <main id="main">
-  <section class="page-head">
-    <div class="wrap">
-      <p class="eyebrow">{{ page.eyebrow | default: site.tagline }}</p>
-      <h1>{{ page.heading | default: page.title }}</h1>
-      {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
-    </div>
-  </section>
 
-  <div class="wrap content">
-    {{ content }}
+<section class="hero">
+  <div class="hero-hex" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1>{{ page.heading_lead }} <span class="accent">{{ page.heading_accent }}</span></h1>
+      <p class="hero-lede">{{ page.lede }}</p>
+      <a class="btn btn-primary btn-lg" href="{{ '/contacts/' | relative_url }}">{{ page.cta | default: 'Try It Risk Free' }}</a>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="mailer mailer-dark"></div>
+      <div class="mailer mailer-red"></div>
+      <div class="mailer mailer-letter">
+        <div class="letter-logo"></div>
+        <span class="letter-line w90"></span>
+        <span class="letter-line w80"></span>
+        <span class="letter-line w95"></span>
+        <span class="letter-line w60"></span>
+        <span class="letter-sig"></span>
+      </div>
+      <span class="tag tag-peach">Printed<br>Postcards</span>
+      <span class="tag tag-purple">Handwritten<br>Cards</span>
+    </div>
   </div>
+
+  <div class="partners">
+    <span class="partner-badge">
+      <em>Spring 2025</em>
+      <strong>Momentum Leader</strong>
+    </span>
+    <span class="partner">HAILTRACE</span>
+    <span class="partner">StreetFair</span>
+    <span class="partner">eXp Realty</span>
+    <span class="partner">Susan G. Komen</span>
+    <span class="partner">Charity Navigator</span>
+  </div>
+</section>
+
+<div class="wrap content">
+  {{ content }}
+</div>
+
 </main>
 
-<footer class="site-footer">
-  <div class="wrap footer-inner">
-    <div>
-      <p class="footer-brand">Northgate Precision</p>
-      <p class="muted">1420 Foundry Road, Bay 6<br>Cleveland, OH 44114</p>
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <img src="{{ '/assets/img/logo.webp' | relative_url }}" width="200" height="38" alt="LettrLabs">
+      <p>Automated direct mail that plugs into the rest of your marketing stack.</p>
     </div>
     <div>
-      <p class="footer-brand">Hours</p>
-      <p class="muted">Mon&ndash;Fri 7:00&ndash;17:30<br>Saturday by appointment</p>
+      <h4>Platform</h4>
+      <a href="{{ '/products/' | relative_url }}">Products</a>
+      <a href="{{ '/milling/' | relative_url }}">Milling</a>
+      <a href="{{ '/contacts/' | relative_url }}">Contacts</a>
     </div>
     <div>
-      <p class="footer-brand">Contact</p>
-      <p class="muted">(216) 555&ndash;0142<br>quotes@northgateprecision.test</p>
+      <h4>Company</h4>
+      <a href="{{ '/contacts/' | relative_url }}">Request a demo</a>
+      <a href="{{ '/contacts/' | relative_url }}">Free sample</a>
+      <a href="{{ '/contacts/' | relative_url }}">Support</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p class="muted">(216) 555&ndash;0142<br>hello@lettrlabs.test</p>
     </div>
   </div>
   <div class="wrap footer-note">
-    <p class="muted">Test property. Not a real business.</p>
+    <p class="muted">Internal test property. Not the real LettrLabs website &mdash; used only to validate the Lead Reveal container install.</p>
   </div>
 </footer>
 

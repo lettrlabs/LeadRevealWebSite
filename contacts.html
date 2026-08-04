@@ -3,30 +3,31 @@ layout: default
 title: Contacts
 nav: contacts
 permalink: /contacts/
-eyebrow: Quotes, purchasing, and the shop floor
-heading: Contacts
-lede: Quote requests go to the estimating desk and are answered within two business days. Anything on an open order goes straight to the buyer named on the acknowledgement.
+heading_lead: Talk to Someone Who Has
+heading_accent: Run Your Campaign
+lede: Tell us a bit about your goals and we will point you to the right next step — a sample pack, a walkthrough, or a pilot campaign.
+cta: Book a Walkthrough
 ---
 
 <div class="grid grid-3">
   <article class="card">
-    <h3>Estimating</h3>
-    <p class="muted">New quotes, drawing review, feasibility</p>
-    <p>(216) 555&ndash;0142 ext. 210<br>quotes@northgateprecision.test</p>
+    <h3>Sales</h3>
+    <p class="muted">Demos, pricing, pilot campaigns</p>
+    <p>(216) 555&ndash;0142 ext. 210<br>sales@lettrlabs.test</p>
   </article>
   <article class="card">
-    <h3>Purchasing</h3>
-    <p class="muted">Open orders, expedites, schedules</p>
-    <p>(216) 555&ndash;0142 ext. 240<br>orders@northgateprecision.test</p>
+    <h3>Support</h3>
+    <p class="muted">Live campaigns, artwork, delivery</p>
+    <p>(216) 555&ndash;0142 ext. 240<br>support@lettrlabs.test</p>
   </article>
   <article class="card">
-    <h3>Quality</h3>
-    <p class="muted">First articles, PPAP, corrective action</p>
-    <p>(216) 555&ndash;0142 ext. 265<br>quality@northgateprecision.test</p>
+    <h3>Partnerships</h3>
+    <p class="muted">Integrations, agencies, resellers</p>
+    <p>(216) 555&ndash;0142 ext. 265<br>partners@lettrlabs.test</p>
   </article>
 </div>
 
-<h2 class="section-title">Request a quote</h2>
+<h2 class="section-title">Request a demo</h2>
 
 <form class="quote-form">
   <div class="field-row">
@@ -36,12 +37,12 @@ lede: Quote requests go to the estimating desk and are answered within two busin
     </label>
     <label class="field">
       <span>Company</span>
-      <input type="text" name="company" autocomplete="organization" placeholder="Lakeside Instruments">
+      <input type="text" name="company" autocomplete="organization" placeholder="Lakeside Home Services">
     </label>
   </div>
   <div class="field-row">
     <label class="field">
-      <span>Email</span>
+      <span>Work email</span>
       <input type="email" name="email" autocomplete="email" placeholder="dana@example.com">
     </label>
     <label class="field">
@@ -51,35 +52,34 @@ lede: Quote requests go to the estimating desk and are answered within two busin
   </div>
   <div class="field-row">
     <label class="field">
-      <span>Process</span>
-      <select name="process">
-        <option>3-axis milling</option>
-        <option>5-axis milling</option>
-        <option>Turning</option>
-        <option>Mill-turn</option>
-        <option>Assembly or weldment</option>
+      <span>Interested in</span>
+      <select name="product">
+        <option>Handwritten cards</option>
+        <option>Printed postcards</option>
+        <option>Letters</option>
+        <option>Triggered automations</option>
+        <option>Not sure yet</option>
       </select>
     </label>
     <label class="field">
-      <span>Quantity</span>
-      <input type="number" name="quantity" min="1" placeholder="25">
+      <span>Monthly volume</span>
+      <input type="number" name="volume" min="1" placeholder="500">
     </label>
   </div>
   <label class="field">
-    <span>Part description</span>
-    <textarea name="details" rows="5" placeholder="Material, tolerances, finish, target date"></textarea>
+    <span>What are you trying to do?</span>
+    <textarea name="details" rows="5" placeholder="Audience, timing, what a win looks like"></textarea>
   </label>
-  <button class="button" type="button">Send request</button>
+  <button class="btn btn-primary btn-lg" type="button">Send request</button>
   <p class="muted">This form is inert on the test site. Nothing is submitted or stored.</p>
 </form>
 
 <section class="panel">
-  <h2>Shop and shipping</h2>
-  <p>1420 Foundry Road, Bay 6, Cleveland, OH 44114. Receiving is open 7:00 to 16:00 weekdays. Dock height is 1.2 m with a leveler; call ahead for anything over 900 kg.</p>
+  <h2>Offices</h2>
+  <p>1420 Foundry Road, Bay 6, Cleveland, OH 44114. Production runs Monday to Friday; anything approved before 14:00 Eastern enters the same day's run.</p>
   <dl class="spec">
     <dt>Main line</dt><dd>(216) 555&ndash;0142</dd>
-    <dt>Fax</dt><dd>(216) 555&ndash;0143</dd>
-    <dt>Hours</dt><dd>Mon&ndash;Fri 7:00&ndash;17:30</dd>
-    <dt>Saturday</dt><dd>By appointment</dd>
+    <dt>Hours</dt><dd>Mon&ndash;Fri 7:00&ndash;17:30 ET</dd>
+    <dt>Support SLA</dt><dd>Next business day</dd>
   </dl>
 </section>

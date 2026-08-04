@@ -1,0 +1,44 @@
+# Cloudflare Pages reads this file from the root of the build output.
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# ── Global ────────────────────────────────────────────────────────────────────
+# CSP must stay on ONE line — Pages does not support line continuations.
+#
+# TWO variants below — exactly ONE Content-Security-Policy line may be active
+# (uncommented) at a time; the other stays commented with a leading '#':
+#
+#   A) LOOSENED (active): script-src / connect-src allow any HTTPS origin via the
+#      `https:` scheme keyword — the Inbound Insight pixel pulls a large, growing
+#      identity/enrichment chain (ge.js → liadm/usbrowserspeed/alocdn/sitedataprocessing…)
+#      and enumerating every host is endless. Trade-off: CSP no longer restricts WHICH
+#      https scripts load or WHERE data is sent, so an injected script isn't blocked from
+#      loading/exfiltrating over https. The other directives (default-src 'self',
+#      object-src 'none', frame-ancestors 'none', base-uri 'none') still apply.
+#      Acceptable for this TEST site; for a real customer prod site prefer variant B.
+#
+#   B) EXPLICIT (commented): the enumerated host allow-list. Tighter, but every new
+#      vendor host that appears must be added by hand.
+#      Third-party script hosts, for reference:
+#        websitevisitorleads.com + app-dev.lettrlabs.com   → lead-reveal pixel
+#        pixel-controller-worker.inbound-insight.workers.dev → injected by px.js
+#        static.cloudflareinsights.com                       → CF Web Analytics beacon
+#        script-src : s3-us-west-2.amazonaws.com (ge.js), rdcdn.com (rtjs),
+#                     data.processwebsitedata.com (cscripts), fe.sitedataprocessing.com,
+#                     b-code.liadm.com (LiveIntent lc2.js)
+#        connect-src: a.usbrowserspeed.com, alocdn.com (ge.js identity beacons)
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https:; style-src 'self'; img-src 'self' data: https://app-dev.lettrlabs.com https://pixel-controller-worker.inbound-insight.workers.dev; font-src 'self'; connect-src 'self' https:; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+#  Content-Security-Policy: default-src 'self'; script-src 'self' https://app-dev.lettrlabs.com https://pixel-controller-worker.inbound-insight.workers.dev https://static.cloudflareinsights.com https://s3-us-west-2.amazonaws.com https://rdcdn.com https://data.processwebsitedata.com https://fe.sitedataprocessing.com https://b-code.liadm.com; style-src 'self'; img-src 'self' data: https://app-dev.lettrlabs.com https://pixel-controller-worker.inbound-insight.workers.dev; font-src 'self'; connect-src 'self' https://app-dev.lettrlabs.com https://pixel-controller-worker.inbound-insight.workers.dev https://s3-us-west-2.amazonaws.com https://rdcdn.com https://data.processwebsitedata.com https://fe.sitedataprocessing.com https://b-code.liadm.com https://a.usbrowserspeed.com https://alocdn.com; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# ── Static assets ─────────────────────────────────────────────────────────────
+# Fingerprint these filenames (bootstrap.min.abc123.css) before trusting the long max-age.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── HTML ──────────────────────────────────────────────────────────────────────
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

@@ -3,74 +3,67 @@ layout: default
 title: Milling
 nav: milling
 permalink: /milling/
-eyebrow: Machine list and process capability
-heading: Milling
-lede: Fourteen machines across two cells, all on a shared tool library so a job can move between spindles without reprogramming.
+heading_lead: Triggered Campaigns That
+heading_accent: Run Themselves
+lede: Wire an event once and the mail keeps going out without anyone opening the dashboard again — storm alerts, website visits, new movers, or your own webhooks.
+cta: See a Trigger in Action
 ---
 
-<h2 class="section-title">Machining centers</h2>
+<h2 class="section-title">Trigger types</h2>
+
+<div class="grid grid-3">
+  <article class="card">
+    <h3>Website visitors</h3>
+    <p>A pixel identifies anonymous traffic and turns matched visitors into mailable recipients. Page rules decide which campaign claims which visit.</p>
+  </article>
+  <article class="card">
+    <h3>Storm events</h3>
+    <p>Hail and wind polygons arrive from HailTrace, get intersected with the service area, and the affected addresses become an audience the same day.</p>
+  </article>
+  <article class="card">
+    <h3>Radius mail</h3>
+    <p>Drop a pin on a completed job and mail the surrounding blocks. Radius, quantity, and property filters are set per automation.</p>
+  </article>
+  <article class="card">
+    <h3>New movers</h3>
+    <p>Weekly address-change data filtered to the service area, so the welcome card lands while the boxes are still unpacked.</p>
+  </article>
+  <article class="card">
+    <h3>CRM stage changes</h3>
+    <p>A deal moving to a given stage fires a piece. Works from HubSpot, Salesforce, or anything that can call a webhook.</p>
+  </article>
+  <article class="card">
+    <h3>Custom webhooks</h3>
+    <p>Post a payload with an address and a template id. Everything downstream — sanitization, suppression, print, mail — is handled.</p>
+  </article>
+</div>
+
+<h2 class="section-title">Guardrails on every automation</h2>
 
 <div class="table-scroll">
   <table>
     <thead>
-      <tr><th>Machine</th><th>Axes</th><th>Travels (X &times; Y &times; Z)</th><th>Spindle</th><th>Tools</th></tr>
+      <tr><th>Control</th><th>What it does</th><th>Default</th></tr>
     </thead>
     <tbody>
-      <tr><td>DMG Mori DMU 65</td><td>5</td><td>735 &times; 650 &times; 560 mm</td><td>18,000 rpm</td><td>120</td></tr>
-      <tr><td>DMG Mori DMU 50</td><td>5</td><td>500 &times; 450 &times; 400 mm</td><td>15,000 rpm</td><td>60</td></tr>
-      <tr><td>Haas UMC-750</td><td>5</td><td>762 &times; 508 &times; 508 mm</td><td>12,000 rpm</td><td>40</td></tr>
-      <tr><td>Haas VF-4SS</td><td>3</td><td>1,270 &times; 508 &times; 635 mm</td><td>12,000 rpm</td><td>30</td></tr>
-      <tr><td>Haas VF-3 (2 units)</td><td>3</td><td>1,016 &times; 508 &times; 635 mm</td><td>8,100 rpm</td><td>24</td></tr>
-      <tr><td>Brother S700X1</td><td>3</td><td>700 &times; 400 &times; 305 mm</td><td>16,000 rpm</td><td>21</td></tr>
-      <tr><td>Okuma Genos M560-V</td><td>3</td><td>1,050 &times; 560 &times; 460 mm</td><td>15,000 rpm</td><td>32</td></tr>
+      <tr><td>Monthly send cap</td><td>Hard ceiling on pieces mailed per calendar month</td><td>500</td></tr>
+      <tr><td>Daily send cap</td><td>Smooths a spike so one event cannot drain the budget</td><td>Off</td></tr>
+      <tr><td>Suppression window</td><td>Blocks re-mailing an address already contacted recently</td><td>90 days</td></tr>
+      <tr><td>Holdout group</td><td>Withholds a random share so lift can be measured</td><td>Off</td></tr>
+      <tr><td>Duplicate collapse</td><td>Collapses the same household arriving from two sources</td><td>On</td></tr>
+      <tr><td>Do-not-mail list</td><td>Account-wide address and name exclusions</td><td>On</td></tr>
+      <tr><td>Address validation</td><td>Standardizes and verifies deliverability before print</td><td>On</td></tr>
     </tbody>
   </table>
 </div>
 
-<h2 class="section-title">Process capability</h2>
-
-<div class="grid grid-3">
-  <article class="card">
-    <h3>Tolerance</h3>
-    <p>Routine work holds &plusmn;0.025 mm. The two DMG cells hold &plusmn;0.008 mm on bores and &plusmn;0.013 mm on profile in a temperature-controlled bay.</p>
-  </article>
-  <article class="card">
-    <h3>Surface finish</h3>
-    <p>As-machined 1.6 &micro;m Ra typical, 0.4 &micro;m Ra achievable on flats with a fly cutter and finish pass.</p>
-  </article>
-  <article class="card">
-    <h3>Setup reduction</h3>
-    <p>Five-axis trunnion work takes most parts to a single setup, which is where the repeatability on multi-feature bodies comes from.</p>
-  </article>
-  <article class="card">
-    <h3>Probing</h3>
-    <p>Renishaw spindle probes on every center. Part zero is found in cycle, not on the setup sheet, so drift between lots is caught immediately.</p>
-  </article>
-  <article class="card">
-    <h3>Tool management</h3>
-    <p>Presetter measured offsets loaded straight to the control. Broken-tool detection on unattended second and third shift running.</p>
-  </article>
-  <article class="card">
-    <h3>Coolant and chips</h3>
-    <p>Through-spindle coolant at 70 bar on the deep-pocket machines. Chips are segregated by alloy for recycling credit.</p>
-  </article>
-</div>
-
 <section class="panel">
-  <h2>Programming and files we accept</h2>
-  <p>Mastercam 2025 with in-house post processors for each control. Send solids as STEP or Parasolid, drawings as PDF with GD&amp;T called out. Native SolidWorks and Inventor files are fine too.</p>
+  <h2>Page rules decide the winner</h2>
+  <p>When several automations sit on the same pixel, the one that named the visited page wins. An automation with no page rules is a fallback and only claims visits nothing else targeted.</p>
   <div class="pill-row">
-    <span class="pill">STEP AP214</span>
-    <span class="pill">Parasolid</span>
-    <span class="pill">SLDPRT</span>
-    <span class="pill">IPT</span>
-    <span class="pill">IGES</span>
-    <span class="pill">PDF drawing</span>
-    <span class="pill">DXF</span>
+    <span class="pill">equals /contacts</span>
+    <span class="pill">contains /products</span>
+    <span class="pill">contains /milling</span>
+    <span class="pill">no rule (fallback)</span>
   </div>
-</section>
-
-<section class="panel">
-  <h2>Lead time</h2>
-  <p>Prototype milling is 5 working days. Production releases run 10 working days from purchase order, or 3 days on the expedite lane when a spindle can be freed. Both quoted on the <a class="link" href="{{ '/contacts/' | relative_url }}">contacts page</a>.</p>
 </section>
