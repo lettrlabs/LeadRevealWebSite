@@ -2,8 +2,8 @@ title: LettrLabs
 tagline: Automated direct mail marketing
 description: Internal test property used to validate the LettrLabs Lead Reveal container install.
 
-url: https://lettrlabs.github.io
-baseurl: /LeadRevealWebSite
+url: https://leadreveal.nonprod.lettrlabs.com
+baseurl: ""
 
 lead_reveal:
   base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
