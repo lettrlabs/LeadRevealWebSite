@@ -7,7 +7,7 @@ baseurl: /LeadRevealWebSite
 
 lead_reveal:
   base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
-  public_key: ""
+  public_key: "NDkwS6EqIeEb3CC0Cy5uM18SKtFZoiNX"
 
 include:
   - _headers
