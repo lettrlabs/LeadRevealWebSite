@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ page.title }} &middot; {{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+{% if site.lead_reveal.public_key != "" %}
+<script async src="{{ site.lead_reveal.base_url }}{{ site.lead_reveal.public_key }}.js"></script>
+{% endif %}
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark">NP</span>
+      <span class="brand-text">Northgate<strong>Precision</strong></span>
+    </a>
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}"{% if page.nav == 'home' %} class="active" aria-current="page"{% endif %}>Home</a>
+      <a href="{{ '/products/' | relative_url }}"{% if page.nav == 'products' %} class="active" aria-current="page"{% endif %}>Products</a>
+      <a href="{{ '/milling/' | relative_url }}"{% if page.nav == 'milling' %} class="active" aria-current="page"{% endif %}>Milling</a>
+      <a href="{{ '/contacts/' | relative_url }}"{% if page.nav == 'contacts' %} class="active" aria-current="page"{% endif %}>Contacts</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{{ page.eyebrow | default: site.tagline }}</p>
+      <h1>{{ page.heading | default: page.title }}</h1>
+      {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+    </div>
+  </section>
+
+  <div class="wrap content">
+    {{ content }}
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-brand">Northgate Precision</p>
+      <p class="muted">1420 Foundry Road, Bay 6<br>Cleveland, OH 44114</p>
+    </div>
+    <div>
+      <p class="footer-brand">Hours</p>
+      <p class="muted">Mon&ndash;Fri 7:00&ndash;17:30<br>Saturday by appointment</p>
+    </div>
+    <div>
+      <p class="footer-brand">Contact</p>
+      <p class="muted">(216) 555&ndash;0142<br>quotes@northgateprecision.test</p>
+    </div>
+  </div>
+  <div class="wrap footer-note">
+    <p class="muted">Test property. Not a real business.</p>
+  </div>
+</footer>
+
+</body>
+</html>

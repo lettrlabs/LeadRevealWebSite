@@ -1,0 +1,16 @@
+title: Northgate Precision
+tagline: Contract CNC milling and turning
+description: Test site used to validate the LettrLabs Lead Reveal container install.
+
+url: https://lettrlabs.github.io
+baseurl: /LeadRevealWebSite
+
+lead_reveal:
+  base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
+  public_key: ""
+
+include:
+  - _headers
+
+exclude:
+  - README.md
