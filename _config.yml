@@ -5,9 +5,20 @@ description: Internal test property used to validate the LettrLabs Lead Reveal c
 url: https://leadreveal.nonprod.lettrlabs.com
 baseurl: ""
 
+# One container per non-prod environment. Each App answers only its own key; the other tags
+# answer 404 and do nothing. The non-prod test setup runner (LettrLabs.AiHarness tools/test-setup,
+# feature lead_reveal) writes these keys on the QA dealer's pixel after every restore.
 lead_reveal:
-  base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
-  public_key: "NDkwS6EqIeEb3CC0Cy5uM18SKtFZoiNX"
+  containers:
+    - env: dev
+      base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
+      public_key: "NDkwS6EqIeEb3CC0Cy5uM18SKtFZoiNX"
+    - env: qat
+      base_url: https://app-qat.lettrlabs.com/api/lead-reveal/pixels/configuration/
+      public_key: "GY9HYRqoQJG0geFNEM6OFgUZ2b80Qjnj"
+    - env: uat
+      base_url: https://app-uat.lettrlabs.com/api/lead-reveal/pixels/configuration/
+      public_key: "scGXvDiZHupWdj7Nv9iAUm0YWe4ROw9Q"
 
 include:
   - _headers
