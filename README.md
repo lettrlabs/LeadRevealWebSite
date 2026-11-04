@@ -31,23 +31,28 @@ Every page is front matter plus a body and inherits `_layouts/default.html`, so 
 
 ## Installing the Lead Reveal container
 
-Set the public key in `_config.yml`:
+`_config.yml` lists one container per non-prod environment:
 
 ```yaml
 lead_reveal:
-  base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
-  public_key: "PASTE_THE_PUBLIC_KEY_HERE"
+  containers:
+    - env: dev
+      base_url: https://app-dev.lettrlabs.com/api/lead-reveal/pixels/configuration/
+      public_key: "..."
 ```
 
-The layout emits the tag only when `public_key` is non-empty:
+The layout emits one tag per container with a non-empty key:
 
 ```html
 <script async src="{base_url}{public_key}.js"></script>
 ```
 
-`base_url` must match the environment whose App is serving the container. It is the same
-value as the App's `LeadReveal__PixelConfigBaseUrl` env var — which **defaults to the prod
-host**, so always set it explicitly here.
+Each environment's App answers only its own key. The other tags answer 404 and do nothing.
+The qat and uat keys belong to the QA dealer DEALER_A1. The non-prod test setup runner
+(`tools/test-setup` in LettrLabs.AiHarness, feature `lead_reveal`) writes them on that pixel
+after every restore, so a restore needs no change here.
+
+`base_url` must match the environment whose App is serving the container.
 
 To hand-place a literal tag instead, edit the `<head>` in `_layouts/default.html` directly.
 

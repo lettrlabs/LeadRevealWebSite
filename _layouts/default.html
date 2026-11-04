@@ -14,9 +14,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
-{% if site.lead_reveal.public_key != "" %}
-<script async src="{{ site.lead_reveal.base_url }}{{ site.lead_reveal.public_key }}.js"></script>
-{% endif %}
+{% for container in site.lead_reveal.containers %}{% if container.public_key != "" %}
+<script async src="{{ container.base_url }}{{ container.public_key }}.js"></script>
+{% endif %}{% endfor %}
 </head>
 <body>
 
